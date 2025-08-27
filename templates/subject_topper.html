@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Subject Topper</h2>
+  <form method="post" class="mb-3">
+    <div class="mb-3">
+      <select name="subject" class="form-select" required>
+        <option value="">-- Select Subject --</option>
+        {% for subject in subjects %}
+          <option value="{{ subject }}" {% if selected_subject==subject %}selected{% endif %}>{{ subject }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Find Topper</button>
+  </form>
+
+  {% if topper %}
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ topper['name'] }} ({{ topper['roll_number'] }})</h5>
+        <p class="mb-0">Grade: <strong>{{ topper['grade'] }}</strong></p>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

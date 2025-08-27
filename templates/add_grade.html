@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Add / Update Grade</h2>
+  <form method="post" class="card p-3 shadow-sm">
+    <div class="mb-3">
+      <label class="form-label">Roll Number</label>
+      <input type="text" name="roll_number" class="form-control" placeholder="e.g. R001" required>
+      <div class="form-text">Or pick from the list below</div>
+    </div>
+
+    {% if students and students|length > 0 %}
+    <div class="mb-3">
+      <label class="form-label">Pick student</label>
+      <select class="form-select" onchange="this.form.roll_number.value=this.value; return false;">
+        <option value="">-- choose student --</option>
+        {% for s in students %}
+        <option value="{{ s['roll_number'] }}">{{ s['name'] }} ({{ s['roll_number'] }})</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
+
+    <div class="mb-3">
+      <label class="form-label">Subject</label>
+      <input type="text" name="subject" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Grade (0-100)</label>
+      <input type="number" name="grade" min="0" max="100" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Grade</button>
+  </form>
+{% endblock %}

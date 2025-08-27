@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>{{ student['name'] }} ({{ student['roll_number'] }})</h2>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Grades</h5>
+      {% if grades and grades|length > 0 %}
+        <table class="table table-striped">
+          <thead class="table-dark">
+            <tr><th>Subject</th><th>Grade</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+          {% for g in grades %}
+            <tr>
+              <td>{{ g['subject'] }}</td>
+              <td>{{ g['grade'] }}</td>
+              <td>
+                <form action="{{ url_for('delete_grade', grade_id=g['id']) }}" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this grade?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <div class="text-muted">No grades yet.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <p><strong>Average:</strong> {{ average }}</p>
+  <a class="btn btn-outline-secondary" href="{{ url_for('students') }}">Back to Students</a>
+{% endblock %}

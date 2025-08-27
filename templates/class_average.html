@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Class Average</h2>
+  <form method="post" class="mb-3">
+    <div class="mb-3">
+      <select name="subject" class="form-select" required>
+        <option value="">-- Select Subject --</option>
+        {% for subject in subjects %}
+          <option value="{{ subject }}" {% if selected_subject==subject %}selected{% endif %}>{{ subject }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Compute Average</button>
+  </form>
+
+  {% if avg is not none %}
+    <div class="alert alert-info mt-3">Average for <strong>{{ selected_subject }}</strong> is <strong>{{ avg }}</strong></div>
+  {% endif %}
+{% endblock %}
