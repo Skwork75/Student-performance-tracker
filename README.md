@@ -1,7 +1,7 @@
 # Student Performance Tracker
 
 ## Overview
-The Student Performance Tracker is a Python and Flask-based web application that allows teachers to manage students, assign grades, calculate averages, and track performance. The application uses an SQLite database for storing student records and provides a simple web interface for interaction. The project is deployed on PythonAnywhere for online access. Final project of VaultofCodes internship.
+The Student Performance Tracker is a Python and Flask-based web application that allows teachers to manage students, assign grades, calculate averages, and track performance. The application uses an SQLite database for storing student records and provides a simple web interface for interaction. The project is deployed on PythonAnywhere for online access. Final project of (VaultofCodes internship).
 
 **Live Demo:** [Student Performance Tracker](https://sk175.pythonanywhere.com/)
 
